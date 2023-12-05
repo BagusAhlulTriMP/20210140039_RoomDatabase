@@ -4,7 +4,7 @@ import android.content.Context
 import com.example.roomdbtest.data.DatabaseSiswa
 
 interface ContainerApp {
-    val repositoriSiswav: RepositoriSiswa
+    val repositoriSiswa: RepositoriSiswa
 }
 
 class ContainerDataApp(private val context: Context): ContainerApp{
