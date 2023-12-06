@@ -156,7 +156,8 @@ fun DataSiswa(
             }
             Text(
                 text = siswa.alamat,
-                style = MaterialTheme.typography.titleMedium)
+                style = MaterialTheme.typography.titleMedium
+            )
         }
     }
 }
