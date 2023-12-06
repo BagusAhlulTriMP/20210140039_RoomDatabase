@@ -12,8 +12,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.roomdbtest.R
+import com.example.roomdbtest.ui.theme.halaman.DestinasiEntry
+import com.example.roomdbtest.ui.theme.halaman.DestinasiHome
+import com.example.roomdbtest.ui.theme.halaman.HomeScreen
 
 @Composable
 fun SiswaApp(navController: NavController= rememberNavController()){
@@ -47,4 +52,13 @@ fun SiswaTopAppBar(
 fun HostNavigasi(
     navController: NavController,
     modifier: Modifier = Modifier
-){}
+){
+    NavHost(navController = navController, startDestination = DestinasiHome.route, modifier = Modifier )
+    {
+        composable(DestinasiHome.route){
+            HomeScreen(
+                navigateToItemEntry = { navController.navigate(DestinasiEntry.route)},
+                )
+        }
+    }
+}
