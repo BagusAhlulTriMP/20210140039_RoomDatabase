@@ -1,4 +1,4 @@
-package com.example.roomdbtest.ui.theme
+package com.example.roomdbtest
 
 import android.app.Application
 import com.example.roomdbtest.repositori.ContainerApp
