@@ -16,7 +16,9 @@ import androidx.navigation.compose.rememberNavController
 import com.example.roomdbtest.R
 
 @Composable
-fun SiswaApp(navController: NavController= rememberNavController()){}
+fun SiswaApp(navController: NavController= rememberNavController()){
+    HostNavigasi(navController = navController)
+}
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun SiswaTopAppBar(
