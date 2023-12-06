@@ -101,8 +101,8 @@ fun BodyHome(
                 style = MaterialTheme.typography.titleLarge
             )
         } else {
-            itemSiswa = itemSiswa,
-            modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small))
+            ListSiswa(itemSiswa = itemSiswa,
+                modifier = Modifier.padding(horizontal = dimensionResource(id = R.dimen.padding_small)))
         }
     }
 }
