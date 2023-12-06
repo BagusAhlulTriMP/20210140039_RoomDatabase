@@ -12,16 +12,18 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.roomdbtest.R
 import com.example.roomdbtest.ui.theme.halaman.DestinasiEntry
 import com.example.roomdbtest.ui.theme.halaman.DestinasiHome
+import com.example.roomdbtest.ui.theme.halaman.EntrySiswaScreen
 import com.example.roomdbtest.ui.theme.halaman.HomeScreen
 
 @Composable
-fun SiswaApp(navController: NavController= rememberNavController()){
+fun SiswaApp(navController: NavHostController= rememberNavController()){
     HostNavigasi(navController = navController)
 }
 @OptIn(ExperimentalMaterial3Api::class)
@@ -50,15 +52,21 @@ fun SiswaTopAppBar(
 
 @Composable
 fun HostNavigasi(
-    navController: NavController,
+    navController: NavHostController,
     modifier: Modifier = Modifier
 ){
-    NavHost(navController = navController, startDestination = DestinasiHome.route, modifier = Modifier )
+    NavHost(
+        navController = navController,
+        startDestination = DestinasiHome.route,
+        modifier = Modifier )
     {
         composable(DestinasiHome.route){
             HomeScreen(
                 navigateToItemEntry = { navController.navigate(DestinasiEntry.route)},
                 )
+        }
+        composable(DestinasiEntry.route){
+            EntrySiswaScreen(navigateBack = { navController.popBackStack()})
         }
     }
 }
