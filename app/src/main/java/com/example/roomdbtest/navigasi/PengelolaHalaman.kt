@@ -13,12 +13,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.NavHostController
+import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import androidx.navigation.navArgument
 import com.example.roomdbtest.R
 import com.example.roomdbtest.ui.theme.halaman.DestinasiEntry
 import com.example.roomdbtest.ui.theme.halaman.DestinasiHome
+import com.example.roomdbtest.ui.theme.halaman.DetailsDestination
+import com.example.roomdbtest.ui.theme.halaman.DetailsScreen
 import com.example.roomdbtest.ui.theme.halaman.EntrySiswaScreen
 import com.example.roomdbtest.ui.theme.halaman.HomeScreen
 
@@ -67,6 +71,21 @@ fun HostNavigasi(
         }
         composable(DestinasiEntry.route){
             EntrySiswaScreen(navigateBack = { navController.popBackStack()})
+        }
+
+        composable(
+            DetailsDestination.routeWithArgs,
+            arguments = listOf(navArgument(DetailsDestination.siswaIdArg) {
+                type = NavType.IntType
+            })
+        ) {
+
+            DetailsScreen(
+                navigateBack = { navController.popBackStack() },
+                navigateToEditItem = {
+
+                }
+            )
         }
     }
 }
