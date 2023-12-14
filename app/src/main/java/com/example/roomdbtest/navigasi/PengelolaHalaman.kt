@@ -25,6 +25,8 @@ import com.example.roomdbtest.ui.theme.halaman.DetailsDestination
 import com.example.roomdbtest.ui.theme.halaman.DetailsScreen
 import com.example.roomdbtest.ui.theme.halaman.EntrySiswaScreen
 import com.example.roomdbtest.ui.theme.halaman.HomeScreen
+import com.example.roomdbtest.ui.theme.halaman.ItemEditDestination
+import com.example.roomdbtest.ui.theme.halaman.ItemEditScreen
 
 @Composable
 fun SiswaApp(navController: NavHostController= rememberNavController()){
@@ -67,6 +69,9 @@ fun HostNavigasi(
         composable(DestinasiHome.route){
             HomeScreen(
                 navigateToItemEntry = { navController.navigate(DestinasiEntry.route)},
+                onDetailClick = {
+                    navController.navigate("${DetailsDestination.route}/$it")
+                },
                 )
         }
         composable(DestinasiEntry.route){
@@ -83,9 +88,19 @@ fun HostNavigasi(
             DetailsScreen(
                 navigateBack = { navController.popBackStack() },
                 navigateToEditItem = {
+                    navController.navigate("${ItemEditDestination.route}/$it")
 
                 }
             )
+        }
+        composable(
+            ItemEditDestination.routeWithArgs,
+            arguments = listOf(navArgument(ItemEditDestination.itemIdArg) {
+                type = NavType.IntType
+            })
+        ) {
+            ItemEditScreen(navigateBack = { navController.popBackStack() },
+                onNavigateUp = { navController.navigateUp() })
         }
     }
 }
